@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import { HiLightningBolt } from "react-icons/hi";
+import { BsThreeDots } from "react-icons/bs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#1F2937",
     display: "flex",
     flexDirection: "column",
+    padding: 34
   },
   titleSection: {
     margin: 0,
-    padding: 0,
+    // padding: 28,
   },
   titleWhite: {
     margin: 0,
@@ -39,10 +41,17 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     backgroundColor: "#2F3E53",
-    margin: 30,
+    marginTop: 30,
+    marginBottom: 30,
+    padding: 0
+  },
+  passwordSection: {
+    // paddingLeft: 34
   },
   passwordContainer: {
-    width: "100%"
+    width: "100%",
+    backgroundColor: "#273549",
+    margin: 10
   }
 }));
 
@@ -74,9 +83,18 @@ export default function MainCard() {
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
-        <Grid container className={classes.passwordSection}>
+        <Grid container item xs={4} spacing={4} className={classes.passwordSection}>
           <Card className={classes.passwordContainer}>
-            <Typography component="overline" variant="overline" align="center" color="error">password</Typography>
+            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
+          </Card>
+          <Card className={classes.passwordContainer}>
+            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
+          </Card>
+          <Card className={classes.passwordContainer}>
+            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
+          </Card>
+          <Card className={classes.passwordContainer}>
+            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
           </Card>
         </Grid>
       </CardContent>
