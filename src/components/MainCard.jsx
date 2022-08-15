@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#1F2937",
     display: "flex",
     flexDirection: "column",
-    padding: 34
+    padding: 34,
   },
   titleSection: {
     margin: 0,
@@ -43,16 +43,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#2F3E53",
     marginTop: 30,
     marginBottom: 30,
-    padding: 0
+    padding: 0,
   },
   passwordSection: {
-    // paddingLeft: 34
+    width: "100%"
   },
   passwordContainer: {
-    width: "100%",
     backgroundColor: "#273549",
-    margin: 10
-  }
+    margin: 10,
+  },
 }));
 
 export default function MainCard() {
@@ -83,19 +82,61 @@ export default function MainCard() {
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
-        <Grid container item xs={4} spacing={4} className={classes.passwordSection}>
-          <Card className={classes.passwordContainer}>
-            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
-          </Card>
-          <Card className={classes.passwordContainer}>
-            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
-          </Card>
-          <Card className={classes.passwordContainer}>
-            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
-          </Card>
-          <Card className={classes.passwordContainer}>
-            <Typography component="overline" variant="overline" align="center"><BsThreeDots/></Typography>
-          </Card>
+        <Grid
+          container
+          item
+          xs={12}
+          className={classes.passwordSection}
+        >
+          <Grid xs={6} item>
+            <Card className={classes.passwordContainer} fullWidth >
+              <Typography
+                component="overline"
+                variant="overline"
+                align="center"
+              >
+                <BsThreeDots style={{color:"#202B3C"}} />
+              </Typography>
+            </Card>
+          </Grid>
+          
+          <Grid item xs={6}>
+            <Card className={classes.passwordContainer} fullWidth >
+              <Typography
+                component="overline"
+                variant="overline"
+                align="center"
+              >
+                <BsThreeDots style={{color:"#202B3C"}} />
+              </Typography>
+            </Card>
+          </Grid>
+          
+          <Grid item xs={6}>
+            <Card className={classes.passwordContainer} fullWidth >
+              <Typography
+                component="overline"
+                variant="overline"
+                align="center"
+              >
+                <BsThreeDots style={{color:"#202B3C"}} />
+              </Typography>
+            </Card>
+          </Grid>
+          
+          <Grid item xs={6}>
+            <Card className={classes.passwordContainer} fullWidth >
+              <Typography
+                component="overline"
+                variant="overline"
+                align="center"
+              >
+                <BsThreeDots style={{color:"#202B3C"}} />
+              </Typography>
+            </Card>
+          </Grid>
+          
+          
         </Grid>
       </CardContent>
     </Card>
