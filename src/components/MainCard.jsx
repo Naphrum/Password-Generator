@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Slider from "@material-ui/core/Slider";
 import { HiLightningBolt } from "react-icons/hi";
 import { BsThreeDots } from "react-icons/bs";
 
@@ -46,12 +47,18 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   passwordSection: {
-    width: "100%"
+    width: "100%",
   },
   passwordContainer: {
     backgroundColor: "#273549",
     margin: 10,
   },
+  inputSlider: {
+    color: "#10B981",
+  }, 
+  passwordSliderText: {
+    color: "#FFFFF"
+  }
 }));
 
 export default function MainCard() {
@@ -67,76 +74,82 @@ export default function MainCard() {
           className={classes.titleSection}
         >
           <Grid item>
-            <h1 className={classes.titleWhite}>Generate a</h1>
-            <h1 className={classes.titleGreen}>random password</h1>
+            <Typography variant="h4" className={classes.titleWhite}>Generate a</Typography>
+            <Typography variant="h4" className={classes.titleGreen}>random password</Typography>
           </Grid>
           <Grid item>
-            <p className={classes.titleText}>
+            <Typography variant="subtitle" className={classes.titleText}>
               Never use an insecure password again.
-            </p>
+            </Typography>
           </Grid>
-          <Grid item>
-            <Button variant="contained" className={classes.button}>
-              <HiLightningBolt /> Generate Password
-            </Button>
+          <Grid container >
+            <Grid item>
+              <Button variant="contained" className={classes.button}>
+                <HiLightningBolt /> Generate Password
+              </Button>
+              <Grid item>
+                <Typography className={classes.passwordSliderText} color="textSecondary">Password Length</Typography>
+                <Slider
+                  className={classes.inputSlider}
+                  valueLabelDisplay="auto"
+                  min={1}
+                  step={1}
+                  max={20}
+                  marks={true}
+                />
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
-        <Grid
-          container
-          item
-          xs={12}
-          className={classes.passwordSection}
-        >
+        <Grid container item xs={12} className={classes.passwordSection}>
           <Grid xs={6} item>
-            <Card className={classes.passwordContainer} fullWidth >
+            <Card className={classes.passwordContainer} fullWidth>
               <Typography
                 component="overline"
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{color:"#202B3C"}} />
+                <BsThreeDots style={{ color: "#202B3C" }} />
               </Typography>
             </Card>
           </Grid>
-          
+
           <Grid item xs={6}>
-            <Card className={classes.passwordContainer} fullWidth >
+            <Card className={classes.passwordContainer} fullWidth>
               <Typography
                 component="overline"
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{color:"#202B3C"}} />
+                <BsThreeDots style={{ color: "#202B3C" }} />
               </Typography>
             </Card>
           </Grid>
-          
+
           <Grid item xs={6}>
-            <Card className={classes.passwordContainer} fullWidth >
+            <Card className={classes.passwordContainer} fullWidth>
               <Typography
                 component="overline"
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{color:"#202B3C"}} />
+                <BsThreeDots style={{ color: "#202B3C" }} />
               </Typography>
             </Card>
           </Grid>
-          
+
           <Grid item xs={6}>
-            <Card className={classes.passwordContainer} fullWidth >
+            <Card className={classes.passwordContainer} fullWidth>
               <Typography
                 component="overline"
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{color:"#202B3C"}} />
+                <BsThreeDots style={{ color: "#202B3C" }} />
               </Typography>
             </Card>
           </Grid>
-          
-          
         </Grid>
       </CardContent>
     </Card>
