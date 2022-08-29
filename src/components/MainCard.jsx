@@ -10,6 +10,100 @@ import Slider from "@material-ui/core/Slider";
 import { HiLightningBolt } from "react-icons/hi";
 import { BsThreeDots } from "react-icons/bs";
 
+const characters = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "~",
+  "`",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "-",
+  "+",
+  "=",
+  "{",
+  "[",
+  "}",
+  "]",
+  ",",
+  "|",
+  ":",
+  ";",
+  "<",
+  ">",
+  ".",
+  "?",
+  "/",
+];
+
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 25,
@@ -18,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     padding: 34,
+    borderRadius: 15,
   },
   titleSection: {
     margin: 0,
@@ -37,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#D5D4D8",
   },
   button: {
+    
     backgroundColor: "#10B981",
     color: "#FFFFFF",
   },
@@ -55,10 +151,15 @@ const useStyles = makeStyles((theme) => ({
   },
   inputSlider: {
     color: "#10B981",
-  }, 
+  },
   passwordSliderText: {
-    color: "#FFFFF"
-  }
+    color: "#FFFFFF",
+  },
+  passwordGenerationSection: {
+    marginTop: 25,
+    display: "flex",
+    flexDirection: "row",
+  },
 }));
 
 export default function MainCard() {
@@ -74,30 +175,40 @@ export default function MainCard() {
           className={classes.titleSection}
         >
           <Grid item>
-            <Typography variant="h4" className={classes.titleWhite}>Generate a</Typography>
-            <Typography variant="h4" className={classes.titleGreen}>random password</Typography>
+            <Typography variant="h4" className={classes.titleWhite}>
+              Generate a
+            </Typography>
+            <Typography variant="h4" className={classes.titleGreen}>
+              random password
+            </Typography>
           </Grid>
           <Grid item>
             <Typography variant="subtitle" className={classes.titleText}>
               Never use an insecure password again.
             </Typography>
           </Grid>
-          <Grid container >
+          <Grid container className={classes.passwordGenerationSection}>
             <Grid item>
-              <Button variant="contained" className={classes.button}>
-                <HiLightningBolt /> Generate Password
-              </Button>
               <Grid item>
-                <Typography className={classes.passwordSliderText} color="textSecondary">Password Length</Typography>
+                <Typography
+                  className={classes.passwordSliderText}
+                  color="textSecondary"
+                >
+                  Password Length
+                </Typography>
                 <Slider
                   className={classes.inputSlider}
                   valueLabelDisplay="auto"
+                  defaultValue={8}
                   min={1}
                   step={1}
-                  max={20}
-                  marks={true}
+                  max={15}
+                  marks
                 />
               </Grid>
+              <Button variant="contained" className={classes.button}>
+                <HiLightningBolt /> Generate Password
+              </Button>
             </Grid>
           </Grid>
         </Grid>
@@ -110,7 +221,7 @@ export default function MainCard() {
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{ color: "#202B3C" }} />
+                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
               </Typography>
             </Card>
           </Grid>
@@ -122,7 +233,19 @@ export default function MainCard() {
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{ color: "#202B3C" }} />
+                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
+              </Typography>
+            </Card>
+          </Grid>
+
+          {/* <Grid item xs={6}>
+            <Card className={classes.passwordContainer} fullWidth>
+              <Typography
+                component="overline"
+                variant="overline"
+                align="center"
+              >
+                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
               </Typography>
             </Card>
           </Grid>
@@ -134,22 +257,10 @@ export default function MainCard() {
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{ color: "#202B3C" }} />
+                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }}  />
               </Typography>
             </Card>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Card className={classes.passwordContainer} fullWidth>
-              <Typography
-                component="overline"
-                variant="overline"
-                align="center"
-              >
-                <BsThreeDots style={{ color: "#202B3C" }} />
-              </Typography>
-            </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </CardContent>
     </Card>
