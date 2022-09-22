@@ -104,6 +104,7 @@ const characters = [
   "/",
 ];
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 25,
@@ -132,7 +133,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#D5D4D8",
   },
   button: {
-    
     backgroundColor: "#10B981",
     color: "#FFFFFF",
   },
@@ -163,6 +163,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MainCard() {
+  const [value, setValue] = React.useState(8);
+  const [passwordOne, setPasswordOne] = React.useState('');
+  const [passwordTwo, setPasswordTwo] = React.useState('');
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    console.log(newValue);
+  };
+
+  function generatePassword(value) {
+    let firstPassword = "";
+    let secondPassword = "";
+    for (let i = 0; i < value; i++) {
+      let randomIndexOne = Math.floor(Math.random() * characters.length);
+      let randomIndexTwo = Math.floor(Math.random() * characters.length);
+      firstPassword += characters[randomIndexOne];
+      secondPassword += characters[randomIndexTwo];
+    }
+    setPasswordOne(firstPassword)
+    setPasswordTwo(secondPassword)
+  }
+  
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -197,16 +218,21 @@ export default function MainCard() {
                   Password Length
                 </Typography>
                 <Slider
+                  value={value}
                   className={classes.inputSlider}
                   valueLabelDisplay="auto"
-                  defaultValue={8}
+                  onChange={handleChange}
                   min={1}
                   step={1}
                   max={15}
                   marks
                 />
               </Grid>
-              <Button variant="contained" className={classes.button}>
+              <Button
+                variant="contained"
+                onClick={() => generatePassword(value)}
+                className={classes.button}
+              >
                 <HiLightningBolt /> Generate Password
               </Button>
             </Grid>
@@ -221,7 +247,7 @@ export default function MainCard() {
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
+                {passwordOne ? <Typography>{passwordOne}</Typography> : <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} /> }
               </Typography>
             </Card>
           </Grid>
@@ -233,34 +259,10 @@ export default function MainCard() {
                 variant="overline"
                 align="center"
               >
-                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
+                {passwordTwo ? <Typography>{passwordTwo}</Typography> : <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} /> }
               </Typography>
             </Card>
           </Grid>
-
-          {/* <Grid item xs={6}>
-            <Card className={classes.passwordContainer} fullWidth>
-              <Typography
-                component="overline"
-                variant="overline"
-                align="center"
-              >
-                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
-              </Typography>
-            </Card>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Card className={classes.passwordContainer} fullWidth>
-              <Typography
-                component="overline"
-                variant="overline"
-                align="center"
-              >
-                <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }}  />
-              </Typography>
-            </Card>
-          </Grid> */}
         </Grid>
       </CardContent>
     </Card>
