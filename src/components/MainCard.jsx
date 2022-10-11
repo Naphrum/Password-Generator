@@ -9,6 +9,8 @@ import Divider from "@material-ui/core/Divider";
 import Slider from "@material-ui/core/Slider";
 import { HiLightningBolt } from "react-icons/hi";
 import { BsThreeDots } from "react-icons/bs";
+import { MdOutlineContentCopy } from "react-icons/md";
+import IconButton from "@material-ui/core/IconButton";
 
 const characters = [
   "A",
@@ -104,7 +106,6 @@ const characters = [
   "/",
 ];
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 25,
@@ -148,6 +149,10 @@ const useStyles = makeStyles((theme) => ({
   passwordContainer: {
     backgroundColor: "#273549",
     margin: 10,
+    height: 30,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   inputSlider: {
     color: "#10B981",
@@ -160,16 +165,22 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
   },
+  generatePassword: {
+    color: "#4ADF86",
+  },
 }));
 
 export default function MainCard() {
   const [value, setValue] = React.useState(8);
-  const [passwordOne, setPasswordOne] = React.useState('');
-  const [passwordTwo, setPasswordTwo] = React.useState('');
+  const [passwordOne, setPasswordOne] = React.useState("");
+  const [passwordTwo, setPasswordTwo] = React.useState("");
   const handleChange = (event, newValue) => {
     setValue(newValue);
     console.log(newValue);
   };
+  // function displayPassword(){
+
+  // }
 
   function generatePassword(value) {
     let firstPassword = "";
@@ -180,10 +191,10 @@ export default function MainCard() {
       firstPassword += characters[randomIndexOne];
       secondPassword += characters[randomIndexTwo];
     }
-    setPasswordOne(firstPassword)
-    setPasswordTwo(secondPassword)
+    setPasswordOne(firstPassword);
+    setPasswordTwo(secondPassword);
   }
-  
+
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -242,25 +253,75 @@ export default function MainCard() {
         <Grid container item xs={12} className={classes.passwordSection}>
           <Grid xs={6} item>
             <Card className={classes.passwordContainer} fullWidth>
-              <Typography
-                component="overline"
-                variant="overline"
-                align="center"
+              <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                spacing={1}
               >
-                {passwordOne ? <Typography>{passwordOne}</Typography> : <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} /> }
-              </Typography>
+                {passwordOne ? (
+                  <>
+                    <Grid item>
+                      <Typography
+                        className="generatedPassword"
+                        style={{ color: "#4ADF86" }}
+                      >
+                        {passwordOne}
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <IconButton
+                        color="primary"
+                        component="span"
+                        onClick={() => {
+                          navigator.clipboard.writeText(passwordOne);
+                        }}
+                      >
+                        <MdOutlineContentCopy style={{ color: "#4ADF86" }} />
+                      </IconButton>
+                    </Grid>
+                  </>
+                ) : (
+                  <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
+                )}
+              </Grid>
             </Card>
           </Grid>
 
           <Grid item xs={6}>
             <Card className={classes.passwordContainer} fullWidth>
-              <Typography
-                component="overline"
-                variant="overline"
-                align="center"
+            <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                spacing={1}
               >
-                {passwordTwo ? <Typography>{passwordTwo}</Typography> : <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} /> }
-              </Typography>
+                {passwordTwo ? (
+                  <>
+                    <Grid item>
+                      <Typography
+                        className="generatedPassword"
+                        style={{ color: "#4ADF86" }}
+                      >
+                        {passwordTwo}
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <IconButton
+                        color="primary"
+                        component="span"
+                        onClick={() => {
+                          navigator.clipboard.writeText(passwordTwo);
+                        }}
+                      >
+                        <MdOutlineContentCopy style={{ color: "#4ADF86" }} />
+                      </IconButton>
+                    </Grid>
+                  </>
+                ) : (
+                  <BsThreeDots style={{ color: "#202B3C", fontSize: 20 }} />
+                )}
+              </Grid>
             </Card>
           </Grid>
         </Grid>
